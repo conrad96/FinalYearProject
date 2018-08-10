@@ -169,7 +169,7 @@
 			<h4 class="panel-title"><span class="glyphicon glyphicon-plus"></span>ADD  COURSE UNIT</h4>
 		</div>
 		<div class="panel-body">
-			<form action="<?php echo $assets['base_ur;'].'online/addCourseunit/$id/$uname'; ?>" method='POST' class="form-horizontal">
+<form action=<?php echo $assets['base_url']."online/addCourseunit/".$id."/".$uname; ?> method='POST' class="form-horizontal">
 				<div class="form-group">
 					<label class="col-md-3">Courseunit Title:</label>
 					<div class="col-md-6">
@@ -189,6 +189,43 @@
 						</select>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-md-3">Lecturer:</label>
+					<div class="col-md-6">
+			<input list="lecturer" placeholder="Search Lecturer" name="lecturer" class="form-control">
+						<datalist list="lecturer" id="lecturer">
+							<?php 
+foreach($lecturers as $r){
+	echo "<option value='".$r->lec_ID."'>".$r->lec_names."</option>";
+}
+							?>
+						</datalist>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Course Unit Code:</label>
+					<div class="col-md-6">
+<input type="text" name="unit_code" placeholder="e.g IT311">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Academic Year:</label>
+					<div class="col-md-6">
+<input type="number" name="unit_year"  placeholder="Type the year this courseunit is taught in e.g 3 for 3rd year" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Semester:</label>
+					<div class="col-md-6">
+<input type="number" name="semester" placeholder="Type the Semester the courseunit is taught e.g 2 for semester 2" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+				<label class="col-md-3">&nbsp;</label>
+				<div class="col-md-7"><hr />
+					<input type="submit"  class="form-control btn-success" value="Add Courseunit">
+				</div>
+			</div>
 			</form>
 		</div>
 	</div>
