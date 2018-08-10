@@ -279,7 +279,7 @@ WHERE lecturers.lec_ID='$id'
 	public function disp_studs($id){
 		$this->load->database();
 		//$query=$this->db->query("SELECT * FROM results_coursework INNER JOIN submission_coursework ON results_coursework.student_No=submission_coursework.student_No WHERE results_coursework.lec_ID='$id' ")->result();
-$query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID from submission_coursework where submission_coursework.work_ID != results_coursework.work_ID ) ")->result();
+$query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 		return $query;
 	}
 	public function ass_sub($id){
