@@ -7,7 +7,7 @@
 		<h3 style="text-shadow: 1px 2px 3px gray;text-align: center;">FACULTY</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[0]; ?></h2></span>
 	</div>
-	
+
 	<div class="col-md-2"  style="width: 400px;height: 120px;border:1px gray solid;" title='Click Here To Register A Department' onclick="deptFunc();">
 		<h3 style="text-shadow: 1px 2px 3px  gray;text-align: center;">DEPARTMENT</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[2]; ?></h2></span>
@@ -22,7 +22,7 @@
 		<h3 style="text-shadow: 1px 2px 3px gray;text-align: center;">LECTURERS</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[3]; ?></h2></span>
 	</div>
-	
+
 	<div class="col-md-2"  style="width: 400px;height: 120px;border:1px gray solid;" title='Click Here To Register A Student'>
 		<h3 style="text-shadow: 1px 2px 3px  gray;text-align: center;">STUDENTS</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[4]; ?></h2></span>
@@ -37,7 +37,7 @@
 		<h3 style="text-shadow: 1px 2px 3px gray;text-align: center;">COURSE UNITS</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[6]; ?></h2></span>
 	</div>
-	
+
 	<div class="col-md-2"  style="width: 400px;height: 120px;border:1px gray solid;" title='<?php echo $counters[7]; ?> Courseworks Registered'>
 		<h3 style="text-shadow: 1px 2px 3px  gray;text-align: center;">COURSE WORKS</h3>
 <span style="text-align: center;padding-top: 10px;text-shadow: 1px 3px 4px gray;color:red;"><h2><?php echo $counters[7]; ?></h2></span>
@@ -89,11 +89,11 @@
 				<div class="col-md-7">
 <select name="fac" class="form-control" >
 	<option selected disabled>--Choose Faculty--</option>
-			<?php 
+			<?php
 			if(isset($fac)){
 			foreach($fac as $r){
 			echo "<option value='".$r->fac_ID."'>".$r->fac_name."</option>";
-			}	
+			}
 			}
 			?>
 </select>
@@ -117,7 +117,7 @@
 		<div class="panel-body">
 		<form action=<?php echo $assets['base_url'].'online/registerCourse/'.$id.'/'.$uname; ?> method="POST" class="form-horizontal">
 			<div class="form-group" >
-				 
+
 				<label class="col-md-3">Course Title:</label>
 				<div class="col-md-7">
 					<input type="text" name="course_name" class="form-control"  placeholder="Type The Course Title Here">
@@ -136,12 +136,12 @@
 				</div>
 			</div>
 			<div class="form-group">
-				 
+
 				<label class="col-md-3">Department:</label>
-				<div class="col-md-7">	
+				<div class="col-md-7">
 <select name="department" class="form-control" >
 	<option selected disabled>--Choose Department--</option>
-						<?php 
+						<?php
 						if(isset($depts)){
 						foreach($depts as $r){
 						echo "<option value='".$r->dept_ID."'>".$r->dept_name."</option>";
@@ -169,7 +169,7 @@
 			<h4 class="panel-title"><span class="glyphicon glyphicon-plus"></span>ADD  COURSE UNIT</h4>
 		</div>
 		<div class="panel-body">
-			<form action="<?php echo $assets['base_ur;'].'online/addCourseunit/$id/$uname'; ?>" method='POST' class="form-horizontal">
+<form action=<?php echo $assets['base_url']."online/addCourseunit/".$id."/".$uname; ?> method='POST' class="form-horizontal">
 				<div class="form-group">
 					<label class="col-md-3">Courseunit Title:</label>
 					<div class="col-md-6">
@@ -181,7 +181,7 @@
 					<div class="col-md-6">
 						<select class="form-control" name="course" required>
 							<option selected disabled>--Choose Course--</option>
-							<?php 
+							<?php
 							foreach($courses as $r){
 								echo "<option value='".$r->course_ID."'>".$r->course_title."</option>";
 							}
@@ -189,6 +189,43 @@
 						</select>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-md-3">Lecturer:</label>
+					<div class="col-md-6">
+			<input list="lecturer" placeholder="Search Lecturer" name="lecturer" class="form-control">
+						<datalist list="lecturer" id="lecturer">
+							<?php
+foreach($lecturers as $r){
+	echo "<option value='".$r->lec_ID."'>".$r->lec_names."</option>";
+}
+							?>
+						</datalist>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Course Unit Code:</label>
+					<div class="col-md-6">
+<input type="text" name="unit_code" placeholder="e.g IT311">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Period(Years):</label>
+					<div class="col-md-6">
+<input type="number" name="unit_year"  placeholder="Type the year this courseunit is taught in e.g 3 for 3rd year" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3">Semester:</label>
+					<div class="col-md-6">
+<input type="number" name="semester" placeholder="Type the Semester the courseunit is taught e.g 2 for semester 2" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+				<label class="col-md-3">&nbsp;</label>
+				<div class="col-md-7"><hr />
+					<input type="submit"  class="form-control btn-success" value="Add Courseunit">
+				</div>
+			</div>
 			</form>
 		</div>
 	</div>

@@ -1,47 +1,68 @@
 <?php include("header.php"); ?>
-
-	<div class="login" style="padding-left: 25%;padding-top: 15%;">
+<center><?php if(isset($msg))echo $msg  ?></center>
+	<div class="login" style="padding-left: 40%;padding-top: 5%;">
 <div class="col-lg-6" >
-	<?php if(isset($msg)){ 
-echo '<div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-    '.$msg.'
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
-</div>';
-	}  ?>
 	
-                <div class="card">
-          <div class="card-header">Login Form</div>
-
-          <div class="card-body card-block">
-            <form action='<?php echo $assets['base_url'].'online/login'; ?>' method="post" >
-<div class="form-group">
+                
+       <section class="pull-right" style='border: 1px solid gray;' id="log">
+       <button class='btn btn-default' onclick="disp_stud();">Students</button>
+       <button class='btn btn-default pull-right' onclick="disp_staff();">Staff</button>
+         <hr />
+<form action='<?php echo $assets['base_url'].'online/login_student'; ?>' method="post" id='stud' >
+         <div class="form-group">
 <div class="input-group">
   <div class="input-group-addon">Student Number</div>
-  <input type="text" id="username3" name="studentNo" class="form-control" placeholder="Type Your Students Number">
+  <input type="text" id="username3" name="studentNo" class="form-control" placeholder="Students Number" required>
   <div class="input-group-addon"><i class="fa fa-user"></i></div>
 </div>
+</div>  <div class="form-group">
+<div class="input-group">
+  <div class="input-group-addon">Password</div>
+  <input type="password" id="password3" name="password" class="form-control" placeholder="Password" required>
+  <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
 </div>
+</div>
+<div class="form-actions form-group">
+<button type="submit" class="btn btn-primary btn-sm btn-lg" id="login_btn">Login</button>
+</div>
+
+</form>
+
+
+
+            <form action='<?php echo $assets['base_url'].'online/login'; ?>' method="post" style='display: none;' id='staff'>
+
 <div class="form-group">
 <div class="input-group">
   <div class="input-group-addon">Email</div>
-  <input type="email" id="email3" name="email" class="form-control">
+  <input type="email" id="email3" name="email" class="form-control" required>
   <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
 </div>
 </div>
 <div class="form-group">
 <div class="input-group">
   <div class="input-group-addon">Password</div>
-  <input type="password" id="password3" name="password" class="form-control">
+  <input type="password" id="password3" name="password" class="form-control" required>
   <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
 </div>
 </div>
 <div class="form-actions form-group">
-<button type="submit" class="btn btn-primary btn-sm btn-lg">Login</button>
+<button type="submit" class="btn btn-primary btn-sm btn-lg" id="login_btn">Login</button>
 </div>
             </form>
-          </div>
+            </section>
+         
                     </div>
-                  </div>
+
+                  
        </div>
+<script type="text/javascript">
+  function disp_stud(){
+document.getElementById("stud").style.display='block';
+document.getElementById("staff").style.display='none';
+  }
+function disp_staff(){
+document.getElementById("stud").style.display='none';
+document.getElementById("staff").style.display='block';
+}
+</script>
