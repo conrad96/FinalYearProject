@@ -148,7 +148,7 @@ $this->load->view("index.php",$data);
 	}//end regAdmin
 	public function regLec($id,$name){
 		$this->load->model('operations');
-		$photoname=$_FILES['photo']['name'];
+		$photoname=trim($_FILES['photo']['name']);
 		$photodata=$_FILES['photo']['tmp_name'];
 		$storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/img/Lecturers/';
 		$url="http://localhost/FinalYearProject/assets/img/Lecturers/".$photoname;
@@ -173,7 +173,7 @@ $this->load->view("index.php",$data);
 	}//end regLec
 	public function regStud($id,$name){
 		$this->load->model('operations');
-		$photoname=$_FILES['photo']['name'];
+		$photoname=trim($_FILES['photo']['name']);
 		$photodata=$_FILES['photo']['tmp_name'];
 		$storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/img/Students/';
 		$url="http://localhost/FinalYearProject/assets/img/Students/".$photoname;
@@ -312,7 +312,7 @@ if($add){
 	public function regCoursework($id,$name){
 	$this->load->model("operations");
 
-$filename=$_FILES['doc']['name'];
+$filename=trim($_FILES['doc']['name']);
 $file=$_FILES['doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/coursework/';
@@ -347,7 +347,7 @@ $bool=$this->operations->regCoursework($package);
 	public function regAssignment($id,$name){
 $this->load->model("operations");
 
-$filename=$_FILES['doc']['name'];
+$filename=trim($_FILES['doc']['name']);
 $file=$_FILES['doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/assignments/';
@@ -388,7 +388,7 @@ if($bool){
 public function regHandout($id,$name){
 $this->load->model("operations");
 
-$filename=$_FILES['doc']['name'];
+$filename=trim($_FILES['doc']['name']);
 $file=$_FILES['doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/handouts/';
@@ -508,7 +508,7 @@ if($bool){
 	}//end deletehand
 	public function edit_cw($id,$name,$work_ID){
 $this->load->model("operations");
-$filename=$_FILES['edit_doc']['name'];
+$filename=trim($_FILES['edit_doc']['name']);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/coursework/';
@@ -549,7 +549,7 @@ $id
 	}
 	public function edit_ass($id,$name,$ass_ID){
 $this->load->model("operations");
-$filename=$_FILES['edit_doc']['name'];
+$filename=trim($_FILES['edit_doc']['name']);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/assignments/';
@@ -590,7 +590,7 @@ $id
 	}
 		public function edit_hand($id,$name,$hand_ID){
 $this->load->model("operations");
-$filename=$_FILES['edit_doc']['name'];
+$filename=trim($_FILES['edit_doc']['name']);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/handouts/';
@@ -767,12 +767,12 @@ $this->input->post("ass_ID"),$id
 	}
 	public function cw_submit_s($id,$uname){
 		$this->load->model("operations");
-			$pname=$_FILES['doc']['name'];
+			$pname=trim($_FILES['doc']['name']);
 			$data=$_FILES['doc']['tmp_name'];
 			$storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/submission_coursework/';
 			$url="http://localhost/FinalYearProject/assets/documents/submission_coursework/".$pname;
 			move_uploaded_file($data,$storage.$pname);
-			$package=array($this->input->post("work_ID"),$this->input->post("lec_ID"),$url,$id);
+			$package=array($this->input->post("work_ID"),$this->input->post("lec_ID"),$url,$id,$this->input->post('unit_ID'));
 			$check=$this->operations->cw_submit_s($package);
 			if($check){
 				$view['assets']=$this->assets();
@@ -796,12 +796,12 @@ $this->input->post("ass_ID"),$id
 	}
 	public function ass_submit_s($id,$uname){
 		$this->load->model("operations");
-			$pname=$_FILES['doc']['name'];
+			$pname=trim($_FILES['doc']['name']);
 			$data=$_FILES['doc']['tmp_name'];
-			$storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/submissions_assignment/';
-			$url="http://localhost/FinalYearProject/assets/documents/submissions_assignment/".$pname;
+			$storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/submission_assignment/';
+			$url="http://localhost/FinalYearProject/assets/documents/submission_assignment/".$pname;
 			move_uploaded_file($data,$storage.$pname);
-			$package=array($this->input->post("assignment_ID"),$this->input->post("lec_ID"),$url,$id);
+			$package=array($this->input->post("assignment_ID"),$this->input->post("lec_ID_ass"),$url,$id);
 			$check=$this->operations->ass_submit_s($package);
 			if($check){
 				$view['assets']=$this->assets();

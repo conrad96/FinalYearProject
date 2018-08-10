@@ -268,27 +268,27 @@ WHERE lecturers.lec_ID='$id'
 	public function cw_sub($id){
 		$this->load->database();
 		$query=$this->db->query("
-			SELECT * FROM submissions_coursework INNER JOIN students ON submissions_coursework.student_No=students.student_No
-			INNER JOIN lecturers ON lecturers.lec_ID=submissions_coursework.lec_ID
-			INNER JOIN coursework ON coursework.work_ID=submissions_coursework.work_ID
-			INNER JOIN courseunit ON courseunit.unit_ID=submissions_coursework.unit_ID
+			SELECT * FROM submission_coursework INNER JOIN students ON submission_coursework.student_No=students.student_No
+			INNER JOIN lecturers ON lecturers.lec_ID=submission_coursework.lec_ID
+			INNER JOIN coursework ON coursework.work_ID=submission_coursework.work_ID
+			INNER JOIN courseunit ON courseunit.unit_ID=submission_coursework.unit_ID
 			WHERE lecturers.lec_ID='$id' ");
 
 		return $query->result();
 	}
 	public function disp_studs($id){
 		$this->load->database();
-		//$query=$this->db->query("SELECT * FROM results_coursework INNER JOIN submissions_coursework ON results_coursework.student_No=submissions_coursework.student_No WHERE results_coursework.lec_ID='$id' ")->result();
-$query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID from submissions_coursework where submissions_coursework.work_ID != results_coursework.work_ID ) ")->result();
+		//$query=$this->db->query("SELECT * FROM results_coursework INNER JOIN submission_coursework ON results_coursework.student_No=submission_coursework.student_No WHERE results_coursework.lec_ID='$id' ")->result();
+$query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID from submission_coursework where submission_coursework.work_ID != results_coursework.work_ID ) ")->result();
 		return $query;
 	}
 	public function ass_sub($id){
 		$this->load->database();
 		$query=$this->db->query("
-			SELECT * FROM submissions_assignment INNER JOIN students ON submissions_assignment.student_No=students.student_No
-			INNER JOIN lecturers ON lecturers.lec_ID=submissions_assignment.lec_ID
-			INNER JOIN assignment ON assignment.assignment_ID=submissions_assignment.assignment_ID
-			INNER JOIN courseunit ON courseunit.unit_ID=submissions_assignment.unit_ID
+			SELECT * FROM submission_assignment INNER JOIN students ON submission_assignment.student_No=students.student_No
+			INNER JOIN lecturers ON lecturers.lec_ID=submission_assignment.lec_ID
+			INNER JOIN assignment ON assignment.assignment_ID=submission_assignment.assignment_ID
+			INNER JOIN courseunit ON courseunit.unit_ID=submission_assignment.unit_ID
 			WHERE lecturers.lec_ID='$id' ");
 
 		return $query->result();
@@ -338,6 +338,7 @@ $query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID 
 		$data['work_ID']=$array[0];
 		$data['subcw_doc']=$array[2];
 		$data['lec_ID']=$array[1];
+		$data['unit_ID']=$array[4];
 		$data['student_No']=$array[3];
 		return ($this->db->insert("submission_coursework",$data))? true:false;
 	}
@@ -347,7 +348,8 @@ $query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID 
 		$data['subass_doc']=$array[2];
 		$data['lec_ID']=$array[1];
 		$data['student_No']=$array[3];
-		return ($this->db->insert("submissions_assignment",$data))? true:false;
+		$data['unit_ID']=$array[4];
+		return ($this->db->insert("submission_assignment",$data))? true:false;
 	}
 }
 ?>

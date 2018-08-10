@@ -62,10 +62,11 @@ if(isset($cw)){
 		foreach($cw as $r){
 			echo "<option value='".$r->work_ID."'>".$r->work_title."</option>";
 			$lec_ID=$r->lec_ID;
+			$unit=$r->unit_ID;
 		}
 		echo "<input type='hidden' value='".$lec_ID."' name='lec_ID' />";
+		echo "<input type='hidden' value='".$unit."' name='unit_ID' />";
 	}else{
-			echo "<input type='hidden' value='0' name='lec_ID' />";
 			echo "<option>Empty no coursework's published</option>";
 	}
 }
@@ -89,11 +90,11 @@ if(isset($cw)){
 
 		 	</form>
 		 	<hr />
-		 	<form action=<?php echo $assets['base_url'].'online/ass_submit/'.$id.'/'.$uname; ?> method="POST" class='form-horizontal' enctype='multipart/form-data'>
+		 	<form action=<?php echo $assets['base_url'].'online/ass_submit_s/'.$id.'/'.$uname; ?> method="POST" class='form-horizontal' enctype='multipart/form-data'>
 		 		<div class="form-group">
 		 			<label class="col-md-4">Assignment</label>
 		 			<div class="col-md-7">
-		 				<select name="work_ID" class="form-control">
+		 				<select name="assignment_ID" class="form-control">
 		 			<option selected disabled>--choose assignment--</option>
 		 			<?php
 if(isset($ass)){
@@ -118,7 +119,6 @@ if(isset($ass)){
 		 				<input type="file" name="doc" class="form-control">
 		 			</div>
 		 		</div>
-		 		<input type="hidden" name="lec_ID">
 		 		<div class="form-group">
 		 			<label class="col-md-4">&nbsp;</label>
 		 			<div class="col-md-7">
