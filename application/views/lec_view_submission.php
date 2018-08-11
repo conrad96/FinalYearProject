@@ -53,6 +53,7 @@ if(isset($assignment)){
 						</div>
 						<div class="panel-body" id="big_layout">
 					<?php
+
  if(isset($cw_sub)){
 
  	if(!empty($cw_sub)){
@@ -209,7 +210,7 @@ if(isset($assignment)){
 				<div class="col-md-7">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h4 class="panel-title">Student Submissions (Assignments)</h4>
+							<h4 class="panel-title">Student Submissions [Assignments]</h4>
 						</div>
 						<div class="panel-body" style="height: 350px;overflow: auto;">
 					<?php

@@ -267,14 +267,16 @@ WHERE lecturers.lec_ID='$id'
 	}
 	public function cw_sub($id){
 		$this->load->database();
-		$query=$this->db->query("
-			SELECT * FROM submission_coursework INNER JOIN students ON submission_coursework.student_No=students.student_No
-			INNER JOIN lecturers ON lecturers.lec_ID=submission_coursework.lec_ID
-			INNER JOIN coursework ON coursework.work_ID=submission_coursework.work_ID
-			INNER JOIN courseunit ON courseunit.unit_ID=submission_coursework.unit_ID
-			WHERE lecturers.lec_ID='$id' ");
-
-		return $query->result();
+		$query=$this->db->query('
+ SELECT * FROM submission_coursework INNER JOIN students ON submission_coursework.student_No=students.student_No
+ INNER JOIN lecturers ON lecturers.lec_ID=submission_coursework.lec_ID
+ INNER JOIN coursework ON coursework.work_ID=submission_coursework.work_ID
+ INNER JOIN courseunit ON courseunit.unit_ID=submission_coursework.unit_ID  WHERE  NOT EXISTS
+  (SELECT *
+   FROM   submission_rescw_log
+   WHERE  submission_rescw_log.work_ID = submission_coursework.work_ID ) AND lecturers.lec_ID="'.$id.'"
+	 ')->result();
+			return $query;
 	}
 	public function disp_studs($id){
 		$this->load->database();
@@ -289,8 +291,10 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 			INNER JOIN lecturers ON lecturers.lec_ID=submission_assignment.lec_ID
 			INNER JOIN assignment ON assignment.assignment_ID=submission_assignment.assignment_ID
 			INNER JOIN courseunit ON courseunit.unit_ID=submission_assignment.unit_ID
-			WHERE lecturers.lec_ID='$id' ");
-
+			WHERE  NOT EXISTS
+		   (SELECT *
+		    FROM   submission_resass_log
+		    WHERE  submission_resass_log.assignment_ID = submission_assignment.assignment_ID ) AND lecturers.lec_ID=$id ");
 		return $query->result();
 	}
 	public function post_score($array){
@@ -315,7 +319,16 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 		$data['lec_ID']=$array[3];
 		$data['student_No']=$array[1];
 		$data['resa_mark']=$array[0];
-	return ($this->db->insert("results_assignments",$data))? true:false;
+	if($this->db->insert("results_assignments",$data)){
+		$log['lec_ID']=$array[3];
+		$log['student_No']=$array[1];
+		$log['assignment_ID']=$array[2];
+		$log['resa_mark']=$array[0];
+		return ($this->db->insert("submission_resass_log",$log))? true:false;
+	}else{
+		return false;
+	}
+
 	}
 	public function cw($id){
 		$this->load->database();

@@ -94,7 +94,7 @@ $this->load->view("index.php",$data);
 		$data['ass']=$this->operations->ass($id);
 		$data['hand']=$this->operations->hand($id);
 		$data['res_cw_s']=$this->operations->res_cw_s($id);
-		$data['res_ass_s']=$this->operations->res_ass_s($id);
+		$data['res_ass_a']=$this->operations->res_ass_s($id);
 		$this->load->view("student",$data);
 	}//end student
 	public function stud_submit($id,$name){
