@@ -49,7 +49,7 @@ if(isset($assignment)){
 				<div class="col-md-7">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h4 class="panel-title">Student Submissions</h4>
+							<h4 class="panel-title">Student Submissions [Coursework]</h4>
 						</div>
 						<div class="panel-body" id="big_layout">
 					<?php
@@ -66,17 +66,17 @@ echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_su
 
 		?>
 <!-- start view modal-->
-<div id="myModal_<?php echo $i; ?>" class="modal fade" role="dialog">
+<div id="myModal_<?php echo $i; ?>" class="modal fade" role="dialog" style="width:85%; overflow:auto;">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content" style="overflow:auto;">
+      <div class="modal-header" style="overflow:auto;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       <center>  <h4 class="modal-title">Coursework Submission </h4><p /></center>
         <h4 class="text-warning"><?php echo $r->stud_names.' <span class="pull-right">Student N0. '.$r->student_No."</span>"; ?></h4>
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body" style="width:85%; overflow:auto;">
       	<form class="form-horizontal">
       		<div class="form-group">
   				<label class="col-md-6">Courseunit</label>
@@ -225,14 +225,14 @@ if(isset($assignment)){
 		foreach($ass_sub as $r){
 
 
-echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_submitted."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_as_".$y."' onClick='$('#myModal_as_".$y."').modal()' >View Assignment</button>&nbsp;&nbsp;&nbsp;<button type='button' data-toggle='modal' data-target='#myModal_a_".$y."' onClick='$('#myModal_a_".$y."').modal()' >Add Score</button></span></li>";
+echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_submit."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_as_".$y."' onClick='$('#myModal_as_".$y."').modal()' >View Assignment</button>&nbsp;&nbsp;&nbsp;<button type='button' data-toggle='modal' data-target='#myModal_a_".$y."' onClick='$('#myModal_a_".$y."').modal()' >Add Score</button></span></li>";
 		?>
 <!-- start view modal-->
-<div id="myModal_as_<?php echo $y; ?>" class="modal fade" role="dialog">
+<div id="myModal_as_<?php echo $y; ?>" class="modal fade" role="dialog" style="overflow:auto;">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content" style="overflow:auto;">
+      <div class="modal-header" style="overflow:auto;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       <center>  <h4 class="modal-title">Assignment Submission </h4><p /></center>
         <h4 class="text-warning"><?php echo $r->stud_names.' <span class="pull-right">Student N0. '.$r->student_No."</span>"; ?></h4>
@@ -265,7 +265,7 @@ echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_su
   			<div class="form-group">
   				<label class="col-md-6">Date Submitted</label>
   				  <div class="col-md-6">
-  				  	<?php echo $r->dtime_submitted; ?>
+  				  	<?php echo $r->dtime_submit; ?>
   				  </div>
   			</div>
       </div>

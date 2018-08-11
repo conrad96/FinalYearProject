@@ -103,8 +103,10 @@ if(isset($ass)){
 		foreach($ass as $r){
 			echo "<option value='".$r->assignment_ID."'>".$r->assignment_title."</option>";
 			$lec_ID_ass=$r->lec_ID;
+			$unit_a=$r->unit_ID;
 		}
 		echo "<input type='hidden' value='".$lec_ID_ass."' name='lec_ID_ass' />";
+		echo "<input type='hidden' value='".$unit_a."' name='unit_ID' />";
 	}else{
 		echo "<option>Empty no coursework's published</option>";
 	}

@@ -279,7 +279,7 @@ WHERE lecturers.lec_ID='$id'
 	public function disp_studs($id){
 		$this->load->database();
 		//$query=$this->db->query("SELECT * FROM results_coursework INNER JOIN submission_coursework ON results_coursework.student_No=submission_coursework.student_No WHERE results_coursework.lec_ID='$id' ")->result();
-$query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID from submission_coursework where submission_coursework.work_ID != results_coursework.work_ID ) ")->result();
+$query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 		return $query;
 	}
 	public function ass_sub($id){
@@ -345,11 +345,21 @@ $query=$this->db->query("SELECT * FROM results_coursework WHERE (select work_ID 
 	public function ass_submit_s($array){
 		$this->load->database();
 		$data['assignment_ID']=$array[0];
-		$data['subass_doc']=$array[2];
+		$data['subass_doc']=trim($array[2]);
 		$data['lec_ID']=$array[1];
 		$data['student_No']=$array[3];
 		$data['unit_ID']=$array[4];
 		return ($this->db->insert("submission_assignment",$data))? true:false;
+	}
+	public function profile_student($id){
+		$this->load->database();
+$query=$this->db->query("SELECT * FROM students INNER JOIN courses ON courses.course_ID=students.course_ID INNER JOIN departments ON departments.dept_ID=courses.dept_ID WHERE students.student_No='$id' ")->result();
+		return $query;
+	}
+	public function update_pwd_stud($pwd,$id){
+		$this->load->database();
+		$query=$this->db->query("UPDATE students SET stud_password='$pwd' WHERE student_No='$id' ");
+		return ($this->db->affected_rows() == 1)? true:false;
 	}
 }
 ?>
