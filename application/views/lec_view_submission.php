@@ -59,11 +59,7 @@ if(isset($assignment)){
  		$i=0;
  		echo "<ul class='list-group'>";
 		foreach($cw_sub as $r){
-
-
 echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_submit."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_".$i."' onClick='$('#myModal').modal()' >View Work</button>&nbsp;&nbsp;&nbsp;<button type='button' data-toggle='modal' data-target='#myModal_m_".$i."' onClick='$('#myModal_m_".$i."').modal()' >Add Score</button></span></li>";
-
-
 		?>
 <!-- start view modal-->
 <div id="myModal_<?php echo $i; ?>" class="modal fade" role="dialog" style="width:85%; overflow:auto;">

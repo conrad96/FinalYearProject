@@ -299,7 +299,15 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 		$data['rescw_mark']=$array[0];
 		$data['lec_ID']=$array[3];
 		$data['student_No']=$array[1];
-	return ($this->db->insert("results_coursework",$data))? true:false;
+		if ($this->db->insert("results_coursework",$data)){
+			$log['lec_ID']=$array[3];
+			$log['student_No']=$array[1];
+			$log['work_ID']=$array[2];
+			$log['rescw_mark']	=$array[0];
+			return ($this->db->insert("submission_rescw_log",$log))? true:false;
+		}else{
+			return false;
+		}
 	}
 	public function post_score_ass($array){
 		$this->load->database();
