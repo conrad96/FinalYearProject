@@ -351,5 +351,15 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 		$data['unit_ID']=$array[4];
 		return ($this->db->insert("submission_assignment",$data))? true:false;
 	}
+	public function profile_student($id){
+		$this->load->database();
+$query=$this->db->query("SELECT * FROM students INNER JOIN courses ON courses.course_ID=students.course_ID INNER JOIN departments ON departments.dept_ID=courses.dept_ID WHERE students.student_No='$id' ")->result();
+		return $query;
+	}
+	public function update_pwd_stud($pwd,$id){
+		$this->load->database();
+		$query=$this->db->query("UPDATE students SET stud_password='$pwd' WHERE student_No='$id' ");
+		return ($this->db->affected_rows() == 1)? true:false;
+	}
 }
 ?>

@@ -692,7 +692,39 @@ if(true){
 		$this->load->view("lec_profile",$data);
 		}
 	}
-	}
+}
+public function edit_stud_pwd($id,$name){
+	$this->load->model('operations');
+if($this->input->post("password")!=$this->input->post("cpassword")){
+$data['assets']=$this->assets();
+$data['id']=$id;
+$data['uname']=$name;
+$data['studs']=$this->operations->studs($id);
+$data['profile_student']=$this->operations->profile_student($id);
+$data['msg']="<div class='row alert alert-danger'><center>Password Mismatch. please try again</center></div>";
+$this->load->view("stud-profile",$data);
+}else{
+	$pwd=$this->input->post("cpassword");
+$bool=$this->operations->update_pwd_stud($pwd,$id);
+if($bool){
+	$data['assets']=$this->assets();
+$data['id']=$id;
+$data['uname']=$name;
+$data['studs']=$this->operations->studs($id);
+$data['profile_student']=$this->operations->profile_student($id);
+$data['msg']="<div class='row alert alert-success'><center>Password changed successfully</center></div>";
+$this->load->view("stud-profile",$data);
+}else{
+		$data['assets']=$this->assets();
+$data['id']=$id;
+$data['uname']=$name;
+$data['studs']=$this->operations->studs($id);
+$data['profile_student']=$this->operations->profile_student($id);
+$data['msg']="<div class='row alert alert-danger'><center>An error occured. password not changed</center></div>";
+$this->load->view("stud-profile",$data);
+}
+}
+}
 	public function post_score($id,$name){
 		$this->load->model("operations");
 		$package=array(
@@ -822,6 +854,14 @@ $this->input->post("ass_ID"),$id
 				$this->load->view("student-submit",$view);
 			}
 
+	}
+	public function stud_profile($id,$name){
+		$this->load->model("operations");
+		$data['id']=$id;
+		$data['uname']=$name;
+		$data['assets']=$this->assets();
+		$data['profile_student']=$this->operations->profile_student($id);
+		$this->load->view("stud-profile",$data);
 	}
 	public function logout(){
 		$this->index();
