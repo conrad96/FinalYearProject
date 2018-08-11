@@ -7,3 +7,12 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
+*log*
+*bak*
+.htaccess
+config.php
+/config.srvr.php
+/config.live.php
+assets/documents/*
+/.htaccess
+*log*

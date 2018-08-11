@@ -512,12 +512,13 @@ if($bool){
 	}//end deletehand
 	public function edit_cw($id,$name,$work_ID){
 $this->load->model("operations");
-$filename=trim($_FILES['edit_doc']['name']);
+$filename=trim(addslashes($_FILES['edit_doc']['name']));
+$_file=str_replace(' ','_',$filename);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/coursework/';
-move_uploaded_file($file,$storage.$filename);
-$path="http://localhost/FinalYearProject/assets/documents/coursework/".$filename;
+move_uploaded_file($file,$storage.$_file);
+$path="http://localhost/FinalYearProject/assets/documents/coursework/".$_file;
 
 		$package=array(
 $this->input->post("edit_title"),
@@ -553,12 +554,13 @@ $id
 	}
 	public function edit_ass($id,$name,$ass_ID){
 $this->load->model("operations");
-$filename=trim($_FILES['edit_doc']['name']);
+$filename=trim(addslashes($_FILES['edit_doc']['name']));
+$_file=str_replace(' ','_',$filename);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/assignments/';
-move_uploaded_file($file,$storage.$filename);
-$path="http://localhost/FinalYearProject/assets/documents/assignments/".$filename;
+move_uploaded_file($file,$storage.$_file);
+$path="http://localhost/FinalYearProject/assets/documents/assignments/".$_file;
 
 		$package=array(
 $this->input->post("edit_title"),
@@ -594,12 +596,13 @@ $id
 	}
 		public function edit_hand($id,$name,$hand_ID){
 $this->load->model("operations");
-$filename=trim($_FILES['edit_doc']['name']);
+$filename=trim(addslashes($_FILES['edit_doc']['name']));
+$_file=str_replace(' ','_',$filename);
 $file=$_FILES['edit_doc']['tmp_name'];
 
 $storage=$_SERVER['DOCUMENT_ROOT'].'/FinalYearProject/assets/documents/handouts/';
-move_uploaded_file($file,$storage.$filename);
-$path="http://localhost/FinalYearProject/assets/documents/handouts/".$filename;
+move_uploaded_file($file,$storage.$_file);
+$path="http://localhost/FinalYearProject/assets/documents/handouts/".$_file;
 		$package=array(
 $this->input->post("edit_title"),$path,$id,$this->input->post("edit_unit")
 		);
