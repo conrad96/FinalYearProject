@@ -345,7 +345,7 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 	public function ass_submit_s($array){
 		$this->load->database();
 		$data['assignment_ID']=$array[0];
-		$data['subass_doc']=$array[2];
+		$data['subass_doc']=trim($array[2]);
 		$data['lec_ID']=$array[1];
 		$data['student_No']=$array[3];
 		$data['unit_ID']=$array[4];
