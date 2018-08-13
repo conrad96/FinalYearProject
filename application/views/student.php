@@ -76,9 +76,9 @@ if(isset($res_cw_s)){
 					<hr />
 					<center><strong>RESULTS</strong></center>
 					<ul class='list-group'>
-<li class='list-group-item'>Total:<span class='pull-right'><?php echo ($sum_cw+$sum_ass) ; ?></span></li>
-<li class='list-group-item'>(Total/40):<span class='pull-right'><?php echo ($sum_cw+$sum_ass)/40; ?></span></li>
-<li class='list-group-item'>(Total/40)*100:<span class='pull-right'><?php echo ((($sum_cw+$sum_ass)/40)*100).' %'; ?></span></li>
+<li class='list-group-item'>Total [cw/40 + as/40]:<span class='pull-right'><?php echo (($sum_cw/40)+($sum_ass/40)/80); ?></span></li>
+<li class='list-group-item'>(Total/40):<span class='pull-right'><?php echo (($sum_cw/40)+($sum_ass/40)/80)*40; ?></span></li>
+<li class='list-group-item'>(Total/40)*100:<span class='pull-right'><?php echo ((($sum_cw/40)+($sum_ass/40)/80)*100)."%"; ?></span></li>
 					</ul>
 				</div>
 			</div>

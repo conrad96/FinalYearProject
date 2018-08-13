@@ -354,6 +354,17 @@ $query=$this->db->query("SELECT * FROM results_coursework  ")->result();
 			$query=$this->db->query("SELECT * FROM results_assignments INNER JOIN assignment ON results_assignments.assignment_ID=assignment.assignment_ID WHERE results_assignments.student_No='$id' ")->result();
 		return $query;
 	}
+
+		public function all_studs(){
+			$this->load->database();
+			$query=$this->db->query("SELECT * FROM students INNER JOIN courses ON courses.course_ID=students.course_ID INNER JOIN departments ON departments.dept_ID=courses.dept_ID ")->result();
+			return $query;
+		}
+		public function all_lecs(){
+			$this->load->database();
+		$query=$this->db->query("SELECT * FROM lecturers INNER JOIN departments ON departments.dept_ID=lecturers.dept_ID")->result();
+			return $query;
+		}
 		public function cw_submit_s($array){
 		$this->load->database();
 		$data['work_ID']=$array[0];

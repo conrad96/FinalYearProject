@@ -7,21 +7,21 @@
     <meta name="description" content="Online Learning ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     
+
 <link rel="stylesheet" type="text/css" href="<?php echo $assets['css'].'online.css'; ?>">
-    
+
     <link rel="stylesheet" href="<?php echo $assets['bootstrap']; ?>">
     <link rel="stylesheet" href="<?php echo $assets['css'].'font-awesome.min.css'; ?>">
     <link rel="stylesheet" href="<?php echo $assets['css'].'themify-icons.css'; ?>">
     <link rel="stylesheet" href="<?php echo $assets['css'].'flag-icon.min.css'; ?>">
     <link rel="stylesheet" href="<?php echo $assets['css'].'cs-skin-elastic.css'; ?>">
-    
-    <?php 
+
+    <?php
 $css_path=$assets['css'];
     ?>
     <link rel="stylesheet" href="<?php echo $css_path.'strengthify.css'; ?>">
- 
- 
+
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
@@ -36,3 +36,4 @@ $css_path=$assets['css'];
 </style>
 <script src="<?php echo $assets['jquery']; ?>"></script>
 <script type="text/javascript" src="<?php echo $assets['bootstrap_js']; ?>"></script>
+<body style='background: #d2d4cd;'>

@@ -209,7 +209,7 @@ foreach($lecturers as $r){
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-3">Period(Years):</label>
+					<label class="col-md-3">Course Current Year:</label>
 					<div class="col-md-6">
 <input type="number" name="unit_year"  placeholder="Type the year this courseunit is taught in e.g 3 for 3rd year" class="form-control">
 					</div>
