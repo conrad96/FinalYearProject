@@ -53,17 +53,14 @@ if(isset($assignment)){
 						</div>
 						<div class="panel-body" id="big_layout">
 					<?php
+
  if(isset($cw_sub)){
 
  	if(!empty($cw_sub)){
  		$i=0;
  		echo "<ul class='list-group'>";
 		foreach($cw_sub as $r){
-
-
 echo "<li class='list-group-item'>".$r->stud_names." submitted on ".$r->dtime_submit."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_".$i."' onClick='$('#myModal').modal()' >View Work</button>&nbsp;&nbsp;&nbsp;<button type='button' data-toggle='modal' data-target='#myModal_m_".$i."' onClick='$('#myModal_m_".$i."').modal()' >Add Score</button></span></li>";
-
-
 		?>
 <!-- start view modal-->
 <div id="myModal_<?php echo $i; ?>" class="modal fade" role="dialog" style="width:85%; overflow:auto;">
@@ -213,7 +210,7 @@ if(isset($assignment)){
 				<div class="col-md-7">
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h4 class="panel-title">Student Submissions (Assignments)</h4>
+							<h4 class="panel-title">Student Submissions [Assignments]</h4>
 						</div>
 						<div class="panel-body" style="height: 350px;overflow: auto;">
 					<?php

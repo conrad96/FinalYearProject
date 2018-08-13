@@ -7,7 +7,7 @@
 		<div class="form-group">
 			<label class="col-md-3">Upload Photo</label>
 			<div class="col-md-6">
-				<input type="file" name="photo" class="form-control" accept="image/*" >
+				<input type="file" name="photo" class="form-control" accept="image/*" id="uploadImage" onchange="PreviewImage();">
 			</div>
 		</div>
 		<div class="form-group">
@@ -52,7 +52,7 @@
 			<div class="col-md-6">
 				<select name="department" class="form-control">
 					<option disabled selected>--Choose Department--</option>
-						<?php 
+						<?php
 						if(isset($depts)){
 						foreach($depts as $r){
 						echo "<option value='".$r->dept_ID."'>".$r->dept_name."</option>";
@@ -74,7 +74,7 @@
 </div>
 <div class="col-md-3" style="padding-top: 45px;padding-right: 70px;">
 	<div class="card">
-<img src="#" style="width:350px;height: 210px;" class="img-responsive img-thumbnail" alt='' onerror="this.src='<?php echo $assets['image']."default.png"; ?>' ">  
+<img src="#" style="width:350px;height: 210px;" id="uploadPreview" class="img-responsive img-thumbnail" alt='' onerror="this.src='<?php echo $assets['image']."default.png"; ?>' ">
   <div class="card-body">
     <h4 class="card-title">Lecturer Registration</h4>
     <p class="card-text">Fill in All the Lecturers' Required Fields</p>

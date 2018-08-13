@@ -94,7 +94,7 @@ $this->load->view("index.php",$data);
 		$data['ass']=$this->operations->ass($id);
 		$data['hand']=$this->operations->hand($id);
 		$data['res_cw_s']=$this->operations->res_cw_s($id);
-		$data['res_ass_s']=$this->operations->res_ass_s($id);
+		$data['res_ass_a']=$this->operations->res_ass_s($id);
 		$this->load->view("student",$data);
 	}//end student
 	public function stud_submit($id,$name){
@@ -105,6 +105,15 @@ $this->load->view("index.php",$data);
 		$data['cw']=$this->operations->cw($id);
 		$data['ass']=$this->operations->ass($id);
 		$this->load->view("student-submit",$data);
+	}
+	public function view_all($id,$name){
+		$this->load->model("operations");
+		$data['id']=$id;
+		$data['uname']=$name;
+		$data['studs']=$this->operations->all_studs();
+		$data['lecs']=$this->operations->all_lecs();
+		$data['assets']=$this->assets();
+		$this->load->view("admin-view-all",$data);
 	}
 	public function registerLecturer($id,$name){
 		$this->load->model("operations");

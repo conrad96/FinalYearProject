@@ -14,5 +14,11 @@ config.php
 /config.srvr.php
 /config.live.php
 assets/documents/*
+assets/img/Students/*
+assets/img/Lecturers/*
+assets/img/avatar/*
+assets/img/flag/*
+assets/img/flags/*
+assets/img/admin.jpg
 /.htaccess
 *log*

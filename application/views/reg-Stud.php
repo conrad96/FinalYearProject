@@ -7,7 +7,7 @@
 		<div class="form-group">
 			<label class="col-md-3">Upload Photo</label>
 			<div class="col-md-6">
-				<input type="file" name="photo" class="form-control" accept="image/*" >
+				<input type="file" name="photo" class="form-control" accept="image/*" id="uploadImage" onchange="PreviewImage();" >
 			</div>
 		</div>
 		<div class="form-group">
@@ -47,17 +47,17 @@
 				<i id="checkpwd"></i>
 			</div>
 		</div>
-		 
+
 		<div class="form-group">
 			<label class="col-md-3">Course:</label>
 			<div class="col-md-6">
 				<select name="course" class="form-control">
 					<option disabled selected>--Choose Course--</option>
-						<?php 
+						<?php
 						if(isset($courses)){
 							foreach($courses as $r){
 							echo "<option value='".$r->course_ID."'>".$r->course_title."</option>";
-							}	
+							}
 						}
 						?>
 				</select>
@@ -74,7 +74,7 @@
 <div class="col-md-3" style="padding-top: 45px;padding-right: 70px;">
 
 <div class="card">
-<img src="#" style="width:350px;height: 210px;" class="img-responsive img-thumbnail" alt='' onerror="this.src='<?php echo $assets['image']."default.png"; ?>' ">  
+<img src="#" style="width:350px;height: 210px;" class="img-responsive img-thumbnail" alt='' onerror="this.src='<?php echo $assets['image']."default.png"; ?>' " id="uploadPreview" >  
   <div class="card-body">
     <h4 class="card-title">Student Registration</h4>
     <p class="card-text">Fill in All the Students' Required Fields</p>
