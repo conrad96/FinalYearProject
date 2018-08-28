@@ -6,12 +6,12 @@
 		</div>
 		<div class="panel-body">
 			<ul class="col-sm-6 list-group">
-				<?php 
+				<?php
 if(isset($studs)){
 	if(!empty($studs)){
 		$i=0;
 		foreach($studs as $r){
-			echo "<li class='list-group-item'>".$r->stud_names."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_".$i."' onClick='$('#myModal').modal()' >View Profile</button></span></li>";
+			echo "<li class='list-group-item'>".$r->stud_names."<span class='pull-right'><button type='button' data-backdrop='static' data-toggle='modal' data-target='#myModal_".$i."' onClick='$('#myModal').modal()' >View Profile</button></span></li>";
 			//start modal ?>
 <div id="myModal_<?php echo $i; ?>" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -22,17 +22,17 @@ if(isset($studs)){
       <center>  <h4 class="modal-title">STUDENT PROFILE </h4><p /></center>
         <h4 class="text-warning"><?php echo $r->stud_names; ?></h4>
       </div>
-       
+
       <div class="modal-body">
       	<form class="form-horizontal">
       		<div class="form-group">
         <label class="col-md-3">Student Photo</label>
         <div class="col-md-5">
         	<img src=<?php echo $r->stud_photo;?> class='img-thumbnail pull-right' style='width:250px;height:210px;' />
-        </div>	 
+        </div>
     </div>
     	<div class="form-group">
-        <label class="col-md-3">Student Number</label>	 
+        <label class="col-md-3">Student Number</label>
         <div class="col-md-5">
         	<?php echo $r->student_No; ?>
         </div>
@@ -43,8 +43,8 @@ if(isset($studs)){
         	<?php echo $r->stud_names; ?>
         </div>
          	</div>
-         	<div class="form-group"> 
-         <label class="col-md-3">Email</label>	 
+         	<div class="form-group">
+         <label class="col-md-3">Email</label>
          <div class="col-md-5">
         	<?php echo $r->stud_email; ?>
         </div>
@@ -53,19 +53,19 @@ if(isset($studs)){
          <label class="col-md-3">Course</label>
          <div class="col-md-9">
         	<?php echo $r->course_title; ?>
-        </div>	 
+        </div>
      </div>
      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       
+
       </div>
-	  
+
     </div>
 
   </div>
-</div>	
+</div>
 <style type="text/css">
 	label {
 		text-transform: uppercase;

@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
 	<div class="area">
-		<?php 
+		<?php
 if(isset($profile)){
 	if(!empty($profile)){
 		foreach($profile as $r){
@@ -21,14 +21,14 @@ if(isset($profile)){
  ?></span></li>
 	 </ul>
 <p />
-<button type='button' data-toggle='modal' data-target='#myModal' onClick='$('#myModal').modal()' class='btn  btn-info'>Click Here to change Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-hand-o-left"></span></button>
+<button type='button' data-backdrop='static' data-toggle='modal' data-target='#myModal' onClick='$('#myModal').modal()' class='btn  btn-info'>Click Here to change Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-hand-o-left"></span></button>
 
       </div>
 		<?php }
 	}
 }
 		?>
-	
+
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -36,16 +36,16 @@ if(isset($profile)){
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       <center>  <h4 class="modal-title">EDIT PASSWORD  </h4><p /></center>
-       
+
       </div>
-       
+
       <div class="modal-body">
       	<form action=<?php echo $assets['base_url']."online/edit_lec_pwd/".$id."/".$uname.""; ?> method="POST">
       		<div class="form-group">
       			<input type="password" name="password" placeholder="New Password" id="in_r">
       		</div>
       		<div class="form-group">
-      			<input type="password" name="cpassword" placeholder="Confirm  Password" require id="in_r"> 
+      			<input type="password" name="cpassword" placeholder="Confirm  Password" require id="in_r">
       		</div>
       		<div class="form-group">
       			<input type="submit" value="Change password" class="btn btn-success" >
@@ -54,13 +54,13 @@ if(isset($profile)){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       
+
       </div>
-	  
+
     </div>
 
   </div>
-</div>	
+</div>
 	</div>
 </div>
 <?php include("footer.php"); ?>

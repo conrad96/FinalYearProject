@@ -53,10 +53,10 @@
 					<div class="col-md-6">
 					<select class="form-control" name="unit" required="required">
 						<option selected disabled>--Choose Courseunit--</option>
-						<?php 
+						<?php
 					foreach ($units as $r) {
 							echo "<option value='".$r->unit_ID."'>".$r->unit_title."</option>";
-						}	
+						}
 						?>
 					</select>
 					</div>
@@ -80,10 +80,10 @@
 					<input type="submit" value="Publish coursework" class="form-control btn btn-success">
 					</div>
 					</div>
-					</form>		
+					</form>
 			</div>
 		</div>
-		
+
 
 	</div>
 	<div class="col-md-10" id="assignment" style="display: none;">
@@ -104,10 +104,10 @@
 		<div class="col-md-6">
 			<select class="form-control" name="unit" required="required">
 						<option selected disabled>--Choose Courseunit--</option>
-						<?php 
+						<?php
 					foreach ($units as $r) {
 							echo "<option value='".$r->unit_ID."'>".$r->unit_title."</option>";
-						}	
+						}
 						?>
 			</select>
 		</div>
@@ -152,10 +152,10 @@
 		<div class="col-md-6">
 			<select class="form-control" name="unit" required="required">
 				<option selected disabled>--Choose Courseunit--</option>
-				<?php 
+				<?php
 			foreach ($units as $r) {
 					echo "<option value='".$r->unit_ID."'>".$r->unit_title."</option>";
-				}	
+				}
 				?>
 			</select>
 		</div>
@@ -184,13 +184,13 @@
 		</div>
 		<div class="panel-body" style="height: 200px;overflow: auto;">
 			<ul class="list-group">
-				<?php 
+				<?php
 if(isset($coursework)){
 	if(!empty($coursework)){
 		$i=0;
 		foreach($coursework as $r){
 			echo "<li class='list-group-item'>".strtoupper($r->work_title)."<span class='pull-right'>
-<button type='button' data-toggle='modal' data-target='#myModal_".$i."' onClick='$('#myModal').modal()' >Edit</button>
+<button type='button' data-toggle='modal' data-target='#myModal_".$i."' data-backdrop='static' onClick='$('#myModal').modal()' >Edit</button>
 			&nbsp;&nbsp;
 <a href='".$assets['base_url']."online/deletecw/".$id."/".$uname."/".$r->work_ID."'>Delete</a></span></li>";
 			//start modal ?>
@@ -213,10 +213,10 @@ if(isset($coursework)){
 		<div class="col-md-6">
 			<select class="form-control" name="edit_unit" required="required">
 				<option selected disabled>--Choose Courseunit--</option>
-				<?php 
+				<?php
 			foreach ($units as $u) {
 					echo "<option value='".$u->unit_ID."'>".$u->unit_title."</option>";
-				}	
+				}
 				?>
 			</select>
 		</div>
@@ -227,7 +227,7 @@ if(isset($coursework)){
         	<div class="form-group">
         		<input type="date" name="edit_deadline" id="in_r" placeholder="Deadline" class="form-control">
         	</div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -237,9 +237,9 @@ if(isset($coursework)){
     </div>
 
   </div>
-</div>	
+</div>
 
-	<?php //end modal 
+	<?php //end modal
 $i++;
 }
 	}else{
@@ -256,12 +256,12 @@ $i++;
 		</div>
 		<div class="panel-body" style="height: 200px;overflow: auto;">
 			<ul class="list-group">
-				<?php 
+				<?php
 if(isset($assignments)){
 	$x=0;
 	if(!empty($assignments)){
 		foreach($assignments as $r){
-			echo "<li class='list-group-item'>".strtoupper($r->assignment_title)."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_a_".$x."' onClick='$('#myModal_a_".$x."').modal()' >Edit</button>
+			echo "<li class='list-group-item'>".strtoupper($r->assignment_title)."<span class='pull-right'><button type='button' data-toggle='modal' data-backdrop='static' data-target='#myModal_a_".$x."' onClick='$('#myModal_a_".$x."').modal()' >Edit</button>
 			&nbsp;&nbsp;<a href='".$assets['base_url']."online/deleteass/".$id."/".$uname."/".$r->assignment_ID."'>Delete</a></span></li>";
 			//start modal
 ?>
@@ -287,10 +287,10 @@ edit_deadline -->
 		<div class="col-md-6">
 			<select class="form-control" name="edit_unit" required="required">
 				<option selected disabled>--Choose Courseunit--</option>
-				<?php 
+				<?php
 			foreach ($units as $u) {
 					echo "<option value='".$u->unit_ID."'>".$u->unit_title."</option>";
-				}	
+				}
 				?>
 			</select>
 		</div>
@@ -301,7 +301,7 @@ edit_deadline -->
         	<div class="form-group">
         		<input type="date" name="edit_deadline" id="in_r" placeholder="Deadline">
         	</div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -311,10 +311,10 @@ edit_deadline -->
     </div>
 
   </div>
-</div>	
+</div>
 
 <?php	//end modal
-	$x++;		
+	$x++;
 		}
 	}else{
 		echo " <i style='padding-top:30px;'><span class='alert alert-danger'>No Assignments Published</span></i>";
@@ -330,12 +330,12 @@ edit_deadline -->
 		</div>
 		<div class="panel-body" style="height: 200px;overflow: auto;">
 			<ul class="list-group">
-				<?php 
+				<?php
 if(isset($handouts)){
 	if(!empty($handouts)){
 		$y=0;
 		foreach($handouts as $r){
-			echo "<li class='list-group-item'>".strtoupper($r->handout_title)."<span class='pull-right'><button type='button' data-toggle='modal' data-target='#myModal_h_".$y."' onClick='$('#myModal_h_".$y."').modal()' >Edit</button>&nbsp;&nbsp;<a href='".$assets['base_url']."online/deletehand/".$id."/".$uname."/".$r->handout_ID."'>Delete</a></span></li>";
+			echo "<li class='list-group-item'>".strtoupper($r->handout_title)."<span class='pull-right'><button type='button' data-toggle='modal' data-backdrop='static' data-target='#myModal_h_".$y."' onClick='$('#myModal_h_".$y."').modal()' >Edit</button>&nbsp;&nbsp;<a href='".$assets['base_url']."online/deletehand/".$id."/".$uname."/".$r->handout_ID."'>Delete</a></span></li>";
 			//start modal
 ?>
 <div id="myModal_h_<?php echo $y; ?>" class="modal fade" role="dialog">
@@ -358,10 +358,10 @@ if(isset($handouts)){
 		<div class="col-md-6">
 			<select class="form-control" name="edit_unit" required="required">
 				<option selected disabled>--Choose Courseunit--</option>
-				<?php 
+				<?php
 			foreach ($units as $u) {
 					echo "<option value='".$u->unit_ID."'>".$u->unit_title."</option>";
-				}	
+				}
 				?>
 			</select>
 		</div>
@@ -369,7 +369,7 @@ if(isset($handouts)){
         	<div class="form-group">
 <input type="file" name="edit_doc" id="in_r">
         	</div>
-        	 
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -379,7 +379,7 @@ if(isset($handouts)){
     </div>
 
   </div>
-</div>	
+</div>
 
 
 <?php 	//end modal

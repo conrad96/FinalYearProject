@@ -2,11 +2,11 @@
 <center><?php if(isset($msg))echo $msg  ?></center>
 	<div class="login" style="padding-left: 40%;padding-top: 5%;">
 <div class="col-lg-6" >
-	
-                
-       <section class="pull-right" style='border: 1px solid gray;' id="log">
-       <button class='btn btn-default' onclick="disp_stud();">Students</button>
-       <button class='btn btn-default pull-right' onclick="disp_staff();">Staff</button>
+
+
+       <section class="pull-right" style='border: 1px solid gray;border-radius:5px;' id="log">
+       <button class='btn btn-default' onclick="disp_stud();" title='Click Here to Login as Student'>Students</button>
+       <button class='btn btn-default pull-right' onclick="disp_staff();" title='Click Here to Login as Staff i.e Administrator or Lecturer'>Staff</button>
          <hr />
 <form action='<?php echo $assets['base_url'].'online/login_student'; ?>' method="post" id='stud' >
          <div class="form-group">
@@ -51,10 +51,10 @@
 </div>
             </form>
             </section>
-         
+
                     </div>
 
-                  
+
        </div>
 <script type="text/javascript">
   function disp_stud(){
